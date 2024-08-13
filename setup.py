@@ -8,8 +8,8 @@ setup(
     version="0.1.0",
     author="Solaikannan Pandiyan",
     author_email="solaikannanpandiyan@gmail.com",  # Replace with your email
-    description="A safe logging library for multiprocessing applications",
-    long_description="log_safe is a Python library that provides safe and efficient logging capabilities for multiprocessing applications. It ensures that logging is thread-safe and process-safe, making it ideal for complex, multi-process Python applications",
+    description= "log_safe is a Python library that provides safe and efficient logging capabilities for multiprocessing applications. It ensures that logging is thread-safe and process-safe, making it ideal for complex, multi-process Python applications",
+    long_description= long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/solaikannanpandiyan/log_safe",
     packages=find_packages(),
