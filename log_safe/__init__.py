@@ -1,0 +1,1 @@
+from .log_safe import initialize_safe_logging
