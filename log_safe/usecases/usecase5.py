@@ -9,14 +9,14 @@ initialize_safe_logging()
 
 
 def thread_function(name):
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     logger.info(f"Thread {name} starting")
     time.sleep(2)
     logger.info(f"Thread {name} finishing")
 
 
 def process_function(process_name):
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     logger.info(f"Process {process_name} starting")
 
     threads = []
@@ -32,7 +32,7 @@ def process_function(process_name):
 
 
 if __name__ == "__main__":
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     logger.info("Starting combined threading and multiprocessing task")
 
     processes = []

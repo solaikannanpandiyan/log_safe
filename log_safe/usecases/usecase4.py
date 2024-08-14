@@ -6,7 +6,7 @@ import multiprocessing
 initialize_safe_logging()
 
 def error_prone_function(x):
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     try:
         if x == 5:
             raise ValueError("Error processing item 5")
@@ -18,7 +18,7 @@ def error_prone_function(x):
         return None
 
 if __name__ == "__main__":
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     logger.info("Starting error-prone tasks")
 
     with multiprocessing.Pool(processes=4) as pool:

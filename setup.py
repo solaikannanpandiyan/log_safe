@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
-with open("README.md", "r", encoding="utf-8") as fh:
+with open("pypi_readme.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
     name="log_safe",
-    version="0.1.0",
+    version="0.1.1",
     author="Solaikannan Pandiyan",
     author_email="solaikannanpandiyan@gmail.com",  # Replace with your email
     description= "log_safe is a Python library that provides safe and efficient logging capabilities for multiprocessing applications. It ensures that logging is thread-safe and process-safe, making it ideal for complex, multi-process Python applications",

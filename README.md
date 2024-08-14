@@ -1,4 +1,4 @@
-# ![log_safe](./log_safe/contents/log_safe_logo.png)
+# ![log_safe](./log_safe/contents/logo.png)
 
 `log_safe` is a Python library that provides safe and efficient logging capabilities for multiprocessing applications. It ensures that logging is thread-safe and process-safe, making it ideal for complex, multi-process Python applications.
 
@@ -77,7 +77,7 @@ listener_config = {
     'handlers': {
         'file': {
             'class': 'logging.FileHandler',
-            'filename': 'usecase1.log',
+            'filename': 'app.log',
             'formatter': 'detailed',
         },
     },
@@ -117,7 +117,7 @@ initialize_safe_logging(listener_config, worker_config)
 import multiprocessing
 
 def worker_function():
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     logger.info("Worker process executing")
 
 with multiprocessing.Pool(processes=4) as pool:
@@ -132,7 +132,7 @@ with multiprocessing.Pool(processes=4) as pool:
 from concurrent.futures import ProcessPoolExecutor
 
 def worker_function(x):
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     logger.info(f"Processing {x}")
     return x * 2
 
@@ -148,7 +148,7 @@ When creating individual processes, use the patched `Process` class:
 from multiprocessing import Process
 
 def worker_function():
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     logger.info("Individual process executing")
 
 process = Process(target=worker_function)
@@ -366,20 +366,28 @@ Note: `initialize_safe_logging()` is called at the module level in these example
 
 ## Considerations
 
-- Always call `initialize_safe_logging()` in the main process before creating any child processes.
-- The library uses global variables to maintain the logging state. Be cautious when modifying global state in your application.
-- The watchdog mechanism will shut down the logging system if it's idle for too long (default is 10 hours). Adjust this if needed for long-running applications.
-- worker and listener logging config are made at root level with debug level as default 
-- Queue handler is always attached to worker and listener irrespective of configuration
-- Advanced users prefer copying the core file and adding necessary configs if required
+- Always call `initialize_safe_logging()` in the main process before creating any child processes
+- worker and listener logging config are made at root level by default, take this into consideration while declaring `initialize_safe_logging(listerner, worker)` depening upon the log control you prefer
+- Queue handler is always attached to worker and listener irrespective of configuration otherwise what the point in this library itself
+- The library uses global variables to maintain the logging state. Be cautious when modifying global state in your application
+- The watchdog mechanism will shut down the logging system if it's idle for too long (default is 10 hours). Adjust this if needed for long-running applications
+- Advanced users feel free to  copy the core file and perform customized config if required 
 
 ## Scope for improvement
-- Implement logging per processes for more fine grained control
+- Implement logging config per processes for more fine grained control
 - more ways to add logging configurations
+- feel free to suggest generic features if it can make this library better
 
 ## Contributing
 
 Contributions to `log_safe` are welcome! Please submit pull requests or open issues on the GitHub repository.
+
+## More Information on Logging
+check out this brilliantly written python doc [logging cook book](https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook) recommended.
+
+This [medium post](https://fanchenbao.medium.com/python3-logging-with-multiprocessing-f51f460b8778) inspired me write this library defintely worth a read.
+
+checkout articles on [super fast python](https://superfastpython.com/multiprocessing-logging-in-python/#3_Use_Custom_Process-Safe_Logging_recommended) by [jason brownlee](https://www.linkedin.com/in/jasonbrownlee/overlay/contact-info/)
 
 ## License
 

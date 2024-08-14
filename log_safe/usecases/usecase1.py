@@ -6,7 +6,6 @@ import multiprocessing
 initialize_safe_logging()
 
 def worker_function(x):
-    logger = logging.getLogger()
     logger.info(f"Processing item {x}")
     return x * 2
 

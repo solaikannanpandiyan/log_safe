@@ -1,5 +1,4 @@
 
-
 DEFAULT_LISTENER_CONFIG = {
                 'version': 1,
                 'disable_existing_loggers': False,
@@ -29,7 +28,7 @@ DEFAULT_WORKER_CONFIG = {
                 'disable_existing_loggers': False,
                 'formatters': {
                     'standard': {
-                        'format': '%(asctime)s - %(processName)s - %(threadName)s - %(levelname)s - %(message)s'
+                        'format': '%(asctime)s - %(processName)s - %(threadName)s - %(levelname)s - %(name)s - %(message)s'
                     },
                 },
                 'handlers': {
