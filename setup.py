@@ -5,7 +5,7 @@ with open("pypi_readme.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="log_safe",
-    version="0.1.1",
+    version="0.1.2",
     author="Solaikannan Pandiyan",
     author_email="solaikannanpandiyan@gmail.com",  # Replace with your email
     description= "log_safe is a Python library that provides safe and efficient logging capabilities for multiprocessing applications. It ensures that logging is thread-safe and process-safe, making it ideal for complex, multi-process Python applications",
